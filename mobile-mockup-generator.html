@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobile Mockup Frame Generator</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            display: flex;
+            gap: 40px;
+            align-items: flex-start;
+            max-width: 1200px;
+            width: 100%;
+        }
+
+        .controls {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            min-width: 320px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .controls h2 {
+            margin-bottom: 25px;
+            color: #333;
+            font-weight: 600;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #555;
+            font-weight: 500;
+        }
+
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e1e5e9;
+            border-radius: 10px;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus, .form-group select:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            width: 100%;
+            margin-bottom: 10px;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+        }
+
+        .mockup-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .phone-frame {
+            position: relative;
+            width: 280px;
+            height: 560px;
+            background: linear-gradient(145deg, #2c2c2c, #1a1a1a);
+            border-radius: 35px;
+            padding: 20px;
+            box-shadow: 
+                0 25px 50px rgba(0, 0, 0, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .phone-frame:hover {
+            transform: translateY(-5px);
+            box-shadow: 
+                0 35px 70px rgba(0, 0, 0, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        }
+
+        .screen {
+            width: 100%;
+            height: 100%;
+            background: #000;
+            border-radius: 25px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .screen-content {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 25px;
+        }
+
+        .status-bar {
+            position: absolute;
+            top: 10px;
+            left: 0;
+            right: 0;
+            height: 25px;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 15px;
+            z-index: 10;
+            font-size: 12px;
+            color: white;
+        }
+
+        .home-indicator {
+            position: absolute;
+            bottom: 8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 2px;
+        }
+
+        .placeholder {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            text-align: center;
+            font-size: 16px;
+        }
+
+        .upload-area {
+            border: 2px dashed #ccc;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-bottom: 15px;
+        }
+
+        .upload-area:hover {
+            border-color: #667eea;
+            background: rgba(102, 126, 234, 0.05);
+        }
+
+        .upload-area.dragover {
+            border-color: #667eea;
+            background: rgba(102, 126, 234, 0.1);
+        }
+
+        #imageInput {
+            display: none;
+        }
+
+        .download-section {
+            margin-top: 20px;
+        }
+
+        .mockup-types {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .mockup-type {
+            padding: 8px 16px;
+            border: 2px solid #e1e5e9;
+            border-radius: 8px;
+            background: white;
+            cursor: pointer;
+            text-align: center;
+            font-size: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .mockup-type.active {
+            border-color: #667eea;
+            background: #667eea;
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .controls {
+                min-width: 280px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="controls">
+            <h2>📱 Mobile Mockup Generator</h2>
+            
+            <div class="form-group">
+                <label>Phone Type</label>
+                <div class="mockup-types">
+                    <div class="mockup-type active" data-type="iphone">iPhone</div>
+                    <div class="mockup-type" data-type="android">Android</div>
+                    <div class="mockup-type" data-type="modern">Modern</div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Upload Screenshot</label>
+                <div class="upload-area" onclick="document.getElementById('imageInput').click()">
+                    <div>📷 Click to upload or drag & drop</div>
+                    <small>PNG, JPG, or GIF</small>
+                </div>
+                <input type="file" id="imageInput" accept="image/*">
+            </div>
+
+            <div class="form-group">
+                <label>Frame Color</label>
+                <select id="frameColor">
+                    <option value="black">Space Black</option>
+                    <option value="white">Silver White</option>
+                    <option value="gold">Gold</option>
+                    <option value="blue">Ocean Blue</option>
+                    <option value="purple">Purple</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Background</label>
+                <select id="background">
+                    <option value="gradient1">Gradient Blue</option>
+                    <option value="gradient2">Gradient Purple</option>
+                    <option value="solid">Solid Color</option>
+                    <option value="transparent">Transparent</option>
+                </select>
+            </div>
+
+            <button class="btn" onclick="downloadMockup()">📥 Download PNG</button>
+            <button class="btn" onclick="copyToClipboard()">📋 Copy Image</button>
+            
+            <div class="download-section">
+                <small style="color: #666;">
+                    💡 Perfect for GitHub READMEs, portfolios, and presentations!
+                </small>
+            </div>
+        </div>
+
+        <div class="mockup-container">
+            <div class="phone-frame" id="phoneFrame">
+                <div class="status-bar">
+                    <span>9:41</span>
+                    <span>📶 📶 🔋</span>
+                </div>
+                <div class="screen">
+                    <div class="screen-content placeholder" id="screenContent">
+                        <div style="font-size: 48px; margin-bottom: 20px;">📱</div>
+                        <div>Upload your screenshot</div>
+                        <div style="font-size: 14px; opacity: 0.7; margin-top: 10px;">
+                            Drag & drop or click upload button
+                        </div>
+                    </div>
+                </div>
+                <div class="home-indicator"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const imageInput = document.getElementById('imageInput');
+        const screenContent = document.getElementById('screenContent');
+        const phoneFrame = document.getElementById('phoneFrame');
+        const uploadArea = document.querySelector('.upload-area');
+        const frameColorSelect = document.getElementById('frameColor');
+        const backgroundSelect = document.getElementById('background');
+
+        // Frame color schemes
+        const frameColors = {
+            black: 'linear-gradient(145deg, #2c2c2c, #1a1a1a)',
+            white: 'linear-gradient(145deg, #f8f9fa, #e9ecef)',
+            gold: 'linear-gradient(145deg, #ffd700, #b8860b)',
+            blue: 'linear-gradient(145deg, #007bff, #0056b3)',
+            purple: 'linear-gradient(145deg, #6f42c1, #5a32a3)'
+        };
+
+        // Background schemes
+        const backgrounds = {
+            gradient1: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+            gradient2: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)',
+            solid: '#f8f9fa',
+            transparent: 'transparent'
+        };
+
+        // Phone type selection
+        document.querySelectorAll('.mockup-type').forEach(type => {
+            type.addEventListener('click', function() {
+                document.querySelectorAll('.mockup-type').forEach(t => t.classList.remove('active'));
+                this.classList.add('active');
+                updatePhoneStyle(this.dataset.type);
+            });
+        });
+
+        function updatePhoneStyle(type) {
+            const frame = phoneFrame;
+            switch(type) {
+                case 'iphone':
+                    frame.style.borderRadius = '35px';
+                    frame.querySelector('.screen').style.borderRadius = '25px';
+                    break;
+                case 'android':
+                    frame.style.borderRadius = '25px';
+                    frame.querySelector('.screen').style.borderRadius = '15px';
+                    break;
+                case 'modern':
+                    frame.style.borderRadius = '40px';
+                    frame.querySelector('.screen').style.borderRadius = '30px';
+                    break;
+            }
+        }
+
+        // Frame color change
+        frameColorSelect.addEventListener('change', function() {
+            phoneFrame.style.background = frameColors[this.value];
+        });
+
+        // Background change
+        backgroundSelect.addEventListener('change', function() {
+            document.body.style.background = backgrounds[this.value];
+        });
+
+        // Image upload handling
+        imageInput.addEventListener('change', handleImageUpload);
+
+        // Drag and drop functionality
+        uploadArea.addEventListener('dragover', function(e) {
+            e.preventDefault();
+            this.classList.add('dragover');
+        });
+
+        uploadArea.addEventListener('dragleave', function() {
+            this.classList.remove('dragover');
+        });
+
+        uploadArea.addEventListener('drop', function(e) {
+            e.preventDefault();
+            this.classList.remove('dragover');
+            const files = e.dataTransfer.files;
+            if (files.length > 0) {
+                handleImageFile(files[0]);
+            }
+        });
+
+        function handleImageUpload(e) {
+            const file = e.target.files[0];
+            if (file) {
+                handleImageFile(file);
+            }
+        }
+
+        function handleImageFile(file) {
+            if (!file.type.startsWith('image/')) {
+                alert('Please select an image file.');
+                return;
+            }
+
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                screenContent.innerHTML = `<img src="${e.target.result}" class="screen-content" style="width: 100%; height: 100%; object-fit: cover;">`;
+            };
+            reader.readAsDataURL(file);
+        }
+
+        // Download functionality
+        function downloadMockup() {
+            // Create canvas
+            const canvas = document.createElement('canvas');
+            const ctx = canvas.getContext('2d');
+            const scale = 2; // For better quality
+            
+            canvas.width = 280 * scale;
+            canvas.height = 560 * scale;
+            
+            // Scale context for better quality
+            ctx.scale(scale, scale);
+            
+            // Convert phone frame to canvas and download
+            html2canvas(phoneFrame, {
+                scale: scale,
+                backgroundColor: null,
+                allowTaint: true,
+                useCORS: true
+            }).then(canvas => {
+                const link = document.createElement('a');
+                link.download = 'mobile-mockup.png';
+                link.href = canvas.toDataURL();
+                link.click();
+            });
+        }
+
+        function copyToClipboard() {
+            html2canvas(phoneFrame, {
+                scale: 2,
+                backgroundColor: null,
+                allowTaint: true,
+                useCORS: true
+            }).then(canvas => {
+                canvas.toBlob(blob => {
+                    navigator.clipboard.write([
+                        new ClipboardItem({ 'image/png': blob })
+                    ]).then(() => {
+                        alert('Mockup copied to clipboard!');
+                    }).catch(err => {
+                        console.error('Could not copy image: ', err);
+                        // Fallback: download the image
+                        const link = document.createElement('a');
+                        link.download = 'mobile-mockup.png';
+                        link.href = canvas.toDataURL();
+                        link.click();
+                    });
+                });
+            });
+        }
+    </script>
+
+    <!-- Include html2canvas library for downloading -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+</body>
+</html>
