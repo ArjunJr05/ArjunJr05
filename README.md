@@ -1,5 +1,5 @@
 # 💫 About Me:
-## 👋 Hi, I'm HARISH<br><br>
+## 👋 Hi, I'm Arjun<br><br>
 🎓 19 y/o B.Tech Artificial Intelligence & Data Science (2027)  <br>
 🧠 Passionate about Web Development, App Development, and Problem Sloving  <br>
 📊 Skilled Web Development and App Development(beginner–intermediate level)  <br>
