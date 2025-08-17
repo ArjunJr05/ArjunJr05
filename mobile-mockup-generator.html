@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mobile Mockup Frame Generator</title>
+    <title>React Native Emulator Mockup</title>
     <style>
         * {
             margin: 0;
@@ -13,7 +13,7 @@
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
             min-height: 100vh;
             display: flex;
             align-items: center;
@@ -25,7 +25,7 @@
             display: flex;
             gap: 40px;
             align-items: flex-start;
-            max-width: 1200px;
+            max-width: 1400px;
             width: 100%;
         }
 
@@ -34,7 +34,7 @@
             backdrop-filter: blur(10px);
             border-radius: 20px;
             padding: 30px;
-            min-width: 320px;
+            min-width: 350px;
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
         }
 
@@ -42,6 +42,9 @@
             margin-bottom: 25px;
             color: #333;
             font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
         .form-group {
@@ -55,7 +58,7 @@
             font-weight: 500;
         }
 
-        .form-group input, .form-group select {
+        .form-group input, .form-group select, .form-group textarea {
             width: 100%;
             padding: 12px;
             border: 2px solid #e1e5e9;
@@ -64,14 +67,14 @@
             transition: all 0.3s ease;
         }
 
-        .form-group input:focus, .form-group select:focus {
+        .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
             outline: none;
-            border-color: #667eea;
-            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+            border-color: #1e3c72;
+            box-shadow: 0 0 0 3px rgba(30, 60, 114, 0.1);
         }
 
         .btn {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
             color: white;
             border: none;
             padding: 12px 24px;
@@ -86,89 +89,7 @@
 
         .btn:hover {
             transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
-        }
-
-        .mockup-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .phone-frame {
-            position: relative;
-            width: 280px;
-            height: 560px;
-            background: linear-gradient(145deg, #2c2c2c, #1a1a1a);
-            border-radius: 35px;
-            padding: 20px;
-            box-shadow: 
-                0 25px 50px rgba(0, 0, 0, 0.3),
-                inset 0 1px 0 rgba(255, 255, 255, 0.1);
-            transition: all 0.3s ease;
-        }
-
-        .phone-frame:hover {
-            transform: translateY(-5px);
-            box-shadow: 
-                0 35px 70px rgba(0, 0, 0, 0.4),
-                inset 0 1px 0 rgba(255, 255, 255, 0.1);
-        }
-
-        .screen {
-            width: 100%;
-            height: 100%;
-            background: #000;
-            border-radius: 25px;
-            overflow: hidden;
-            position: relative;
-            box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.5);
-        }
-
-        .screen-content {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 25px;
-        }
-
-        .status-bar {
-            position: absolute;
-            top: 10px;
-            left: 0;
-            right: 0;
-            height: 25px;
-            background: rgba(0, 0, 0, 0.8);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 15px;
-            z-index: 10;
-            font-size: 12px;
-            color: white;
-        }
-
-        .home-indicator {
-            position: absolute;
-            bottom: 8px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 120px;
-            height: 4px;
-            background: rgba(255, 255, 255, 0.3);
-            border-radius: 2px;
-        }
-
-        .placeholder {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100%;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            color: white;
-            text-align: center;
-            font-size: 16px;
+            box-shadow: 0 10px 25px rgba(30, 60, 114, 0.3);
         }
 
         .upload-area {
@@ -182,45 +103,241 @@
         }
 
         .upload-area:hover {
-            border-color: #667eea;
-            background: rgba(102, 126, 234, 0.05);
+            border-color: #1e3c72;
+            background: rgba(30, 60, 114, 0.05);
         }
 
         .upload-area.dragover {
-            border-color: #667eea;
-            background: rgba(102, 126, 234, 0.1);
+            border-color: #1e3c72;
+            background: rgba(30, 60, 114, 0.1);
         }
 
         #imageInput {
             display: none;
         }
 
-        .download-section {
-            margin-top: 20px;
+        .emulator-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
         }
 
-        .mockup-types {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-            gap: 10px;
+        .emulator-frame {
+            position: relative;
+            width: 380px;
+            height: 700px;
+            background: linear-gradient(145deg, #2d2d2d, #1a1a1a);
+            border-radius: 25px;
+            padding: 15px;
+            box-shadow: 
+                0 25px 50px rgba(0, 0, 0, 0.4),
+                inset 0 2px 0 rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .emulator-frame:hover {
+            transform: translateY(-5px);
+            box-shadow: 
+                0 35px 70px rgba(0, 0, 0, 0.5),
+                inset 0 2px 0 rgba(255, 255, 255, 0.1);
+        }
+
+        .emulator-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 15px;
+            background: #333;
+            border-radius: 15px 15px 0 0;
+            font-size: 12px;
+            color: #fff;
+        }
+
+        .emulator-controls {
+            display: flex;
+            gap: 6px;
+        }
+
+        .control-btn {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .close-btn { background: #ff5f57; }
+        .minimize-btn { background: #ffbd2e; }
+        .maximize-btn { background: #28ca42; }
+
+        .screen-container {
+            width: 100%;
+            height: calc(100% - 40px);
+            background: #000;
+            border-radius: 0 0 15px 15px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .status-bar {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 30px;
+            background: linear-gradient(90deg, #007bb6, #0066aa);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 15px;
+            z-index: 10;
+            font-size: 12px;
+            color: white;
+            font-weight: 500;
+        }
+
+        .screen-content {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .swiper-container {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            transition: transform 0.3s ease;
+        }
+
+        .swiper-slide {
+            width: 100%;
+            min-width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            padding-top: 30px;
+        }
+
+        .slide1 {
+            background: linear-gradient(135deg, #007bb6, #0066aa);
+        }
+
+        .slide2 {
+            background: linear-gradient(135deg, #dd4b39, #c23321);
+        }
+
+        .slide3 {
+            background: linear-gradient(135deg, #422351, #331a3e);
+        }
+
+        .slide-text {
+            color: white;
+            font-weight: bold;
+            font-size: 18px;
+            text-align: center;
+            padding: 20px;
+            max-width: 80%;
+        }
+
+        .slide-image {
+            max-width: 80%;
+            max-height: 60%;
+            object-fit: contain;
+            border-radius: 10px;
             margin-bottom: 20px;
         }
 
-        .mockup-type {
-            padding: 8px 16px;
-            border: 2px solid #e1e5e9;
-            border-radius: 8px;
-            background: white;
+        .navigation-dots {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.4);
             cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .dot.active {
+            background: white;
+            transform: scale(1.2);
+        }
+
+        .placeholder {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            color: white;
             text-align: center;
+            font-size: 16px;
+            background: linear-gradient(135deg, #007bb6, #422351);
+            padding-top: 30px;
+        }
+
+        .project-info {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            padding: 20px;
+            max-width: 380px;
+            margin-top: 10px;
+        }
+
+        .project-info h3 {
+            color: #333;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 10px;
+        }
+
+        .tech-tag {
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        .swiper-controls {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .swiper-btn {
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            cursor: pointer;
             font-size: 12px;
             transition: all 0.3s ease;
         }
 
-        .mockup-type.active {
-            border-color: #667eea;
-            background: #667eea;
-            color: white;
+        .swiper-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
         }
 
         @media (max-width: 768px) {
@@ -229,8 +346,13 @@
                 align-items: center;
             }
 
+            .emulator-frame {
+                width: 320px;
+                height: 600px;
+            }
+
             .controls {
-                min-width: 280px;
+                min-width: 300px;
             }
         }
     </style>
@@ -238,210 +360,244 @@
 <body>
     <div class="container">
         <div class="controls">
-            <h2>📱 Mobile Mockup Generator</h2>
+            <h2>📱 React Native Emulator</h2>
             
             <div class="form-group">
-                <label>Phone Type</label>
-                <div class="mockup-types">
-                    <div class="mockup-type active" data-type="iphone">iPhone</div>
-                    <div class="mockup-type" data-type="android">Android</div>
-                    <div class="mockup-type" data-type="modern">Modern</div>
-                </div>
+                <label>Project Title</label>
+                <input type="text" id="projectTitle" placeholder="Horizontal Swiper App" value="Horizontal Swiper App">
             </div>
 
             <div class="form-group">
-                <label>Upload Screenshot</label>
-                <div class="upload-area" onclick="document.getElementById('imageInput').click()">
-                    <div>📷 Click to upload or drag & drop</div>
+                <label>Slide 1 - Upload Screenshot</label>
+                <div class="upload-area" data-slide="0" onclick="document.getElementById('imageInput1').click()">
+                    <div>📷 Upload First Screen</div>
                     <small>PNG, JPG, or GIF</small>
                 </div>
-                <input type="file" id="imageInput" accept="image/*">
+                <input type="file" id="imageInput1" accept="image/*">
+                <input type="text" id="slide1Text" placeholder="You have seen the First Screen" value="You have seen the First Screen">
             </div>
 
             <div class="form-group">
-                <label>Frame Color</label>
-                <select id="frameColor">
-                    <option value="black">Space Black</option>
-                    <option value="white">Silver White</option>
-                    <option value="gold">Gold</option>
-                    <option value="blue">Ocean Blue</option>
-                    <option value="purple">Purple</option>
-                </select>
+                <label>Slide 2 - Upload Screenshot</label>
+                <div class="upload-area" data-slide="1" onclick="document.getElementById('imageInput2').click()">
+                    <div>📷 Upload Second Screen</div>
+                    <small>PNG, JPG, or GIF</small>
+                </div>
+                <input type="file" id="imageInput2" accept="image/*">
+                <input type="text" id="slide2Text" placeholder="This one is Second" value="This one is Second">
             </div>
 
             <div class="form-group">
-                <label>Background</label>
-                <select id="background">
-                    <option value="gradient1">Gradient Blue</option>
-                    <option value="gradient2">Gradient Purple</option>
-                    <option value="solid">Solid Color</option>
-                    <option value="transparent">Transparent</option>
-                </select>
+                <label>Slide 3 - Upload Screenshot</label>
+                <div class="upload-area" data-slide="2" onclick="document.getElementById('imageInput3').click()">
+                    <div>📷 Upload Third Screen</div>
+                    <small>PNG, JPG, or GIF</small>
+                </div>
+                <input type="file" id="imageInput3" accept="image/*">
+                <input type="text" id="slide3Text" placeholder="And this is the Third One" value="And this is the Third One">
             </div>
 
-            <button class="btn" onclick="downloadMockup()">📥 Download PNG</button>
-            <button class="btn" onclick="copyToClipboard()">📋 Copy Image</button>
-            
-            <div class="download-section">
-                <small style="color: #666;">
-                    💡 Perfect for GitHub READMEs, portfolios, and presentations!
-                </small>
+            <div class="form-group">
+                <label>Tech Stack (comma-separated)</label>
+                <input type="text" id="techStack" placeholder="React Native, Expo, JavaScript" value="React Native, Expo, JavaScript">
             </div>
+
+            <button class="btn" onclick="downloadMockup()">📥 Download Emulator View</button>
+            <button class="btn" onclick="copyToClipboard()">📋 Copy to Clipboard</button>
         </div>
 
-        <div class="mockup-container">
-            <div class="phone-frame" id="phoneFrame">
-                <div class="status-bar">
-                    <span>9:41</span>
-                    <span>📶 📶 🔋</span>
+        <div class="emulator-container">
+            <div class="emulator-frame" id="emulatorFrame">
+                <div class="emulator-header">
+                    <div class="emulator-controls">
+                        <div class="control-btn close-btn"></div>
+                        <div class="control-btn minimize-btn"></div>
+                        <div class="control-btn maximize-btn"></div>
+                    </div>
+                    <div>React Native Emulator</div>
+                    <div style="font-size: 10px; opacity: 0.7;">▶️ Run</div>
                 </div>
-                <div class="screen">
-                    <div class="screen-content placeholder" id="screenContent">
-                        <div style="font-size: 48px; margin-bottom: 20px;">📱</div>
-                        <div>Upload your screenshot</div>
-                        <div style="font-size: 14px; opacity: 0.7; margin-top: 10px;">
-                            Drag & drop or click upload button
+                
+                <div class="screen-container">
+                    <div class="status-bar">
+                        <span>9:41</span>
+                        <span>📶 📶 🔋 100%</span>
+                    </div>
+                    
+                    <div class="screen-content">
+                        <div class="swiper-container" id="swiperContainer">
+                            <div class="swiper-slide slide1">
+                                <div class="slide-content" id="slideContent0">
+                                    <div class="slide-text">You have seen the First Screen</div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide slide2">
+                                <div class="slide-content" id="slideContent1">
+                                    <div class="slide-text">This one is Second</div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide slide3">
+                                <div class="slide-content" id="slideContent2">
+                                    <div class="slide-text">And this is the Third One</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="navigation-dots">
+                            <div class="dot active" onclick="goToSlide(0)"></div>
+                            <div class="dot" onclick="goToSlide(1)"></div>
+                            <div class="dot" onclick="goToSlide(2)"></div>
+                        </div>
+
+                        <div class="swiper-controls">
+                            <button class="swiper-btn" onclick="prevSlide()">← Prev</button>
+                            <button class="swiper-btn" onclick="nextSlide()">Next →</button>
                         </div>
                     </div>
                 </div>
-                <div class="home-indicator"></div>
+            </div>
+
+            <div class="project-info">
+                <h3 id="projectInfoTitle">📱 Horizontal Swiper App</h3>
+                <p id="projectDescription">A React Native application demonstrating horizontal scrolling with paginated views, perfect for onboarding screens or image galleries.</p>
+                <div class="tech-stack" id="techStackDisplay">
+                    <span class="tech-tag">React Native</span>
+                    <span class="tech-tag">Expo</span>
+                    <span class="tech-tag">JavaScript</span>
+                </div>
             </div>
         </div>
     </div>
 
     <script>
-        const imageInput = document.getElementById('imageInput');
-        const screenContent = document.getElementById('screenContent');
-        const phoneFrame = document.getElementById('phoneFrame');
-        const uploadArea = document.querySelector('.upload-area');
-        const frameColorSelect = document.getElementById('frameColor');
-        const backgroundSelect = document.getElementById('background');
+        let currentSlide = 0;
+        const totalSlides = 3;
+        const slideImages = [null, null, null];
 
-        // Frame color schemes
-        const frameColors = {
-            black: 'linear-gradient(145deg, #2c2c2c, #1a1a1a)',
-            white: 'linear-gradient(145deg, #f8f9fa, #e9ecef)',
-            gold: 'linear-gradient(145deg, #ffd700, #b8860b)',
-            blue: 'linear-gradient(145deg, #007bff, #0056b3)',
-            purple: 'linear-gradient(145deg, #6f42c1, #5a32a3)'
-        };
-
-        // Background schemes
-        const backgrounds = {
-            gradient1: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-            gradient2: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)',
-            solid: '#f8f9fa',
-            transparent: 'transparent'
-        };
-
-        // Phone type selection
-        document.querySelectorAll('.mockup-type').forEach(type => {
-            type.addEventListener('click', function() {
-                document.querySelectorAll('.mockup-type').forEach(t => t.classList.remove('active'));
-                this.classList.add('active');
-                updatePhoneStyle(this.dataset.type);
+        // Image upload handlers
+        ['imageInput1', 'imageInput2', 'imageInput3'].forEach((inputId, index) => {
+            document.getElementById(inputId).addEventListener('change', function(e) {
+                handleImageUpload(e, index);
             });
         });
 
-        function updatePhoneStyle(type) {
-            const frame = phoneFrame;
-            switch(type) {
-                case 'iphone':
-                    frame.style.borderRadius = '35px';
-                    frame.querySelector('.screen').style.borderRadius = '25px';
-                    break;
-                case 'android':
-                    frame.style.borderRadius = '25px';
-                    frame.querySelector('.screen').style.borderRadius = '15px';
-                    break;
-                case 'modern':
-                    frame.style.borderRadius = '40px';
-                    frame.querySelector('.screen').style.borderRadius = '30px';
-                    break;
-            }
-        }
-
-        // Frame color change
-        frameColorSelect.addEventListener('change', function() {
-            phoneFrame.style.background = frameColors[this.value];
+        // Text input handlers
+        ['slide1Text', 'slide2Text', 'slide3Text'].forEach((inputId, index) => {
+            document.getElementById(inputId).addEventListener('input', function(e) {
+                updateSlideText(index, e.target.value);
+            });
         });
 
-        // Background change
-        backgroundSelect.addEventListener('change', function() {
-            document.body.style.background = backgrounds[this.value];
+        // Project title handler
+        document.getElementById('projectTitle').addEventListener('input', function(e) {
+            document.getElementById('projectInfoTitle').textContent = `📱 ${e.target.value}`;
         });
 
-        // Image upload handling
-        imageInput.addEventListener('change', handleImageUpload);
-
-        // Drag and drop functionality
-        uploadArea.addEventListener('dragover', function(e) {
-            e.preventDefault();
-            this.classList.add('dragover');
+        // Tech stack handler
+        document.getElementById('techStack').addEventListener('input', function(e) {
+            updateTechStack(e.target.value);
         });
 
-        uploadArea.addEventListener('dragleave', function() {
-            this.classList.remove('dragover');
-        });
-
-        uploadArea.addEventListener('drop', function(e) {
-            e.preventDefault();
-            this.classList.remove('dragover');
-            const files = e.dataTransfer.files;
-            if (files.length > 0) {
-                handleImageFile(files[0]);
-            }
-        });
-
-        function handleImageUpload(e) {
+        function handleImageUpload(e, slideIndex) {
             const file = e.target.files[0];
-            if (file) {
-                handleImageFile(file);
+            if (file && file.type.startsWith('image/')) {
+                const reader = new FileReader();
+                reader.onload = function(event) {
+                    slideImages[slideIndex] = event.target.result;
+                    updateSlideContent(slideIndex);
+                };
+                reader.readAsDataURL(file);
             }
         }
 
-        function handleImageFile(file) {
-            if (!file.type.startsWith('image/')) {
-                alert('Please select an image file.');
-                return;
+        function updateSlideContent(slideIndex) {
+            const slideContent = document.getElementById(`slideContent${slideIndex}`);
+            const textInput = document.getElementById(`slide${slideIndex + 1}Text`);
+            
+            if (slideImages[slideIndex]) {
+                slideContent.innerHTML = `
+                    <img src="${slideImages[slideIndex]}" class="slide-image" alt="Slide ${slideIndex + 1}">
+                    <div class="slide-text">${textInput.value}</div>
+                `;
+            } else {
+                slideContent.innerHTML = `<div class="slide-text">${textInput.value}</div>`;
             }
-
-            const reader = new FileReader();
-            reader.onload = function(e) {
-                screenContent.innerHTML = `<img src="${e.target.result}" class="screen-content" style="width: 100%; height: 100%; object-fit: cover;">`;
-            };
-            reader.readAsDataURL(file);
         }
+
+        function updateSlideText(slideIndex, text) {
+            const slideContent = document.getElementById(`slideContent${slideIndex}`);
+            if (slideImages[slideIndex]) {
+                slideContent.innerHTML = `
+                    <img src="${slideImages[slideIndex]}" class="slide-image" alt="Slide ${slideIndex + 1}">
+                    <div class="slide-text">${text}</div>
+                `;
+            } else {
+                slideContent.innerHTML = `<div class="slide-text">${text}</div>`;
+            }
+        }
+
+        function updateTechStack(techString) {
+            const techArray = techString.split(',').map(tech => tech.trim()).filter(tech => tech.length > 0);
+            const techStackDisplay = document.getElementById('techStackDisplay');
+            
+            techStackDisplay.innerHTML = techArray.map(tech => 
+                `<span class="tech-tag">${tech}</span>`
+            ).join('');
+        }
+
+        function goToSlide(slideIndex) {
+            currentSlide = slideIndex;
+            updateSliderPosition();
+            updateDots();
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % totalSlides;
+            updateSliderPosition();
+            updateDots();
+        }
+
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+            updateSliderPosition();
+            updateDots();
+        }
+
+        function updateSliderPosition() {
+            const swiperContainer = document.getElementById('swiperContainer');
+            const translateX = -currentSlide * 100;
+            swiperContainer.style.transform = `translateX(${translateX}%)`;
+        }
+
+        function updateDots() {
+            const dots = document.querySelectorAll('.dot');
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentSlide);
+            });
+        }
+
+        // Auto slide functionality
+        setInterval(() => {
+            nextSlide();
+        }, 5000);
 
         // Download functionality
         function downloadMockup() {
-            // Create canvas
-            const canvas = document.createElement('canvas');
-            const ctx = canvas.getContext('2d');
-            const scale = 2; // For better quality
-            
-            canvas.width = 280 * scale;
-            canvas.height = 560 * scale;
-            
-            // Scale context for better quality
-            ctx.scale(scale, scale);
-            
-            // Convert phone frame to canvas and download
-            html2canvas(phoneFrame, {
-                scale: scale,
+            html2canvas(document.getElementById('emulatorFrame'), {
+                scale: 2,
                 backgroundColor: null,
                 allowTaint: true,
                 useCORS: true
             }).then(canvas => {
                 const link = document.createElement('a');
-                link.download = 'mobile-mockup.png';
+                link.download = 'react-native-emulator-mockup.png';
                 link.href = canvas.toDataURL();
                 link.click();
             });
         }
 
         function copyToClipboard() {
-            html2canvas(phoneFrame, {
+            html2canvas(document.getElementById('emulatorFrame'), {
                 scale: 2,
                 backgroundColor: null,
                 allowTaint: true,
@@ -451,18 +607,20 @@
                     navigator.clipboard.write([
                         new ClipboardItem({ 'image/png': blob })
                     ]).then(() => {
-                        alert('Mockup copied to clipboard!');
+                        alert('Emulator mockup copied to clipboard!');
                     }).catch(err => {
                         console.error('Could not copy image: ', err);
-                        // Fallback: download the image
                         const link = document.createElement('a');
-                        link.download = 'mobile-mockup.png';
+                        link.download = 'react-native-emulator-mockup.png';
                         link.href = canvas.toDataURL();
                         link.click();
                     });
                 });
             });
         }
+
+        // Initialize
+        updateTechStack('React Native, Expo, JavaScript');
     </script>
 
     <!-- Include html2canvas library for downloading -->
