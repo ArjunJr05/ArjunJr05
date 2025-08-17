@@ -4,7 +4,7 @@
 
 **Option 1: GitHub Pages (Recommended)**
 ```markdown
-📱 **[Mobile Mockup Generator](https://yourusername.github.io/your-repo/mobile-mockup-generator.html)** 
+📱 **[Mobile Mockup Generator](https://ArjunJr05/ArjunJr05/mobile-mockup-generator.html)** 
 ```
 
 **Option 2: Direct Repository Link**
@@ -12,15 +12,9 @@
 📱 **[Mobile Mockup Generator](./mobile-mockup-generator.html)**
 ```
 
-**Option 3: CodePen/JSFiddle**
-```markdown
-📱 **[Mobile Mockup Generator](https://codepen.io/yourusername/pen/yourpenid)**
-```
 
-**Option 4: Netlify/Vercel (Free Hosting)**
-```markdown
-📱 **[Mobile Mockup Generator](https://your-mockup-generator.netlify.app)**
-```
+
+
 
 ### 📋 **Setup Instructions:**
 
