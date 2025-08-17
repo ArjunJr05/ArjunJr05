@@ -225,7 +225,7 @@ languages_spoken: ["English", "Tamil", "Hindi"]
 </div>
 
 <div align="center">
-<img src="https://github-readme-streak-stats.herokuapp.com/?user=ArjunJr05&theme=tokyonight&hide_border=true&background=0D1117&stroke=00D4AA&ring=00D4AA&fire=00D4AA&currStreakLabel=FFFFFF" alt="GitHub Streak"/>
+<img src="https://streak-stats.demolab.com/?user=ArjunJr05&theme=tokyonight&hide_border=true&background=0D1117&stroke=00D4AA&ring=00D4AA&fire=00D4AA&currStreakLabel=FFFFFF" alt="GitHub Streak"/>
 </div>
 
 ### 📈 **Contribution Graph**
