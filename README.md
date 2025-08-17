@@ -173,8 +173,7 @@ Create stunning screenshots for portfolios and presentations
 **Tech:** `React Native` `Expo` `JavaScript`
 
 <div align="center">
-  
-🎮 **[Try React Native Emulator](https://arjunjr05.github.io/ArjunJr05/)**
+
 
 </div>
 
@@ -232,13 +231,13 @@ Create stunning screenshots for portfolios and presentations
 
 <div align="center">
 
-<a href="https://linkedin.com/in/arjun-d-profile">
+<a href="www.linkedin.com/in/arjun19">
   <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn"/>
 </a>
 <a href="https://github.com/ArjunJr05">
   <img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white" alt="GitHub"/>
 </a>
-<a href="mailto:arjund.dev@gmail.com">
+<a href="mailto:arjunfree256@gmail.com">
   <img src="https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white" alt="Gmail"/>
 </a>
 <a href="https://arjunjr05.github.io">
