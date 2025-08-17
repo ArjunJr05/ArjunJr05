@@ -44,7 +44,7 @@ goal: "Building scalable solutions that impact millions"
 
 **🎮 React Native Emulator**
 <br>
-[![Emulator Demo](https://img.shields.io/badge/🎮-Try_Live_Demo-blue?style=for-the-badge)](https://ArjunJr05.github.io/ArjunJr05/mobile-mockup-generator.html)
+[![Emulator Demo](https://img.shields.io/badge/🎮-Try_Live_Demo-blue?style=for-the-badge)](https://ArjunJr05.github.io/ArjunJr05/index.html)
 <br><br>
 *Interactive React Native app mockup generator*
 <br>
@@ -55,7 +55,7 @@ Perfect for showcasing mobile apps with realistic emulator interface
 
 **📱 Mobile Mockup Generator**
 <br>
-[![Mockup Tool](https://img.shields.io/badge/📱-Create_Mockups-green?style=for-the-badge)](https://ArjunJr05.github.io/ArjunJr05/mobile-mockup-generator.html)
+[![Mockup Tool](https://img.shields.io/badge/📱-Create_Mockups-green?style=for-the-badge)](https://ArjunJr05.github.io/ArjunJr05/index.html)
 <br><br>
 *Professional phone frame generator*
 <br>
