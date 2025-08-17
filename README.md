@@ -44,7 +44,7 @@ goal: "Building scalable solutions that impact millions"
 
 **🎮 React Native Emulator**
 <br>
-[![Emulator Demo](https://img.shields.io/badge/🎮-Try_Live_Demo-blue?style=for-the-badge)](https://arjunjr05.github.io/ArjunJr05/react-native-emulator.html)
+[![Emulator Demo](https://img.shields.io/badge/🎮-Try_Live_Demo-blue?style=for-the-badge)](https://arjunjr05.github.io/ArjunJr05/index.html)
 <br><br>
 *Interactive React Native app mockup generator*
 <br>
@@ -55,7 +55,7 @@ Perfect for showcasing mobile apps with realistic emulator interface
 
 **📱 Mobile Mockup Generator**
 <br>
-[![Mockup Tool](https://img.shields.io/badge/📱-Create_Mockups-green?style=for-the-badge)](https://arjunjr05.github.io/ArjunJr05/)
+[![Mockup Tool](https://img.shields.io/badge/📱-Create_Mockups-green?style=for-the-badge)](https://arjunjr05.github.io/ArjunJr05/index.html)
 <br><br>
 *Professional phone frame generator*
 <br>
@@ -174,7 +174,7 @@ Create stunning screenshots for portfolios and presentations
 
 <div align="center">
   
-🎮 **[Try React Native Emulator](https://yourusername.github.io/your-repo/react-native-emulator.html)**
+🎮 **[Try React Native Emulator](https://arjunjr05.github.io/ArjunJr05/)**
 
 </div>
 
@@ -232,16 +232,16 @@ Create stunning screenshots for portfolios and presentations
 
 <div align="center">
 
-<a href="https://linkedin.com/in/your-linkedin-profile">
+<a href="https://linkedin.com/in/arjun-d-profile">
   <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn"/>
 </a>
 <a href="https://github.com/ArjunJr05">
   <img src="https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white" alt="GitHub"/>
 </a>
-<a href="mailto:your.email@gmail.com">
+<a href="mailto:arjund.dev@gmail.com">
   <img src="https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white" alt="Gmail"/>
 </a>
-<a href="https://your-portfolio-website.com">
+<a href="https://arjunjr05.github.io">
   <img src="https://img.shields.io/badge/Portfolio-FF5722?style=for-the-badge&logo=todoist&logoColor=white" alt="Portfolio"/>
 </a>
 
