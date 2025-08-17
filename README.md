@@ -32,6 +32,43 @@ goal: "Building scalable solutions that impact millions"
 
 ---
 
+## 🛠️ Developer Tools & Utilities
+
+<div align="center">
+
+### 📱 **Mobile Development Showcase Tools**
+
+<table>
+<tr>
+<td width="50%" align="center">
+
+**🎮 React Native Emulator**
+<br>
+[![Emulator Demo](https://img.shields.io/badge/🎮-Try_Live_Demo-blue?style=for-the-badge)](https://yourusername.github.io/your-repo/react-native-emulator.html)
+<br><br>
+*Interactive React Native app mockup generator*
+<br>
+Perfect for showcasing mobile apps with realistic emulator interface
+
+</td>
+<td width="50%" align="center">
+
+**📱 Mobile Mockup Generator**
+<br>
+[![Mockup Tool](https://img.shields.io/badge/📱-Create_Mockups-green?style=for-the-badge)](https://yourusername.github.io/your-repo/mobile-mockup-generator.html)
+<br><br>
+*Professional phone frame generator*
+<br>
+Create stunning screenshots for portfolios and presentations
+
+</td>
+</tr>
+</table>
+
+</div>
+
+---
+
 ## 💼 Professional Experience
 
 <details>
@@ -125,15 +162,21 @@ goal: "Building scalable solutions that impact millions"
 </td>
 <td width="50%">
 
-### 📱 [Mobile Mockup Generator](https://github.com/ArjunJr05/ArjunJr05/blob/main/mobile-mockup-generator.html)
-**Professional screenshot frame tool**
-- 🎨 **Multiple phone frame styles**
-- 🌈 **Customizable colors & backgrounds**
-- 📤 **Drag & drop image upload**
-- 💾 **High-quality PNG export**
-- 🔗 **Perfect for portfolios & READMEs**
+### 📱 [Horizontal Swiper App](https://github.com/ArjunJr05/horizontal-swiper)
+**React Native horizontal scrolling interface**
+- 🎨 **Beautiful gradient backgrounds**
+- 👆 **Smooth swipe gestures**  
+- 📱 **Cross-platform compatibility**
+- ⚡ **Optimized performance**
+- 🎯 **Pagination indicators**
 
-**Tech:** `HTML5` `CSS3` `JavaScript` `Canvas API`
+**Tech:** `React Native` `Expo` `JavaScript`
+
+<div align="center">
+  
+🎮 **[Try React Native Emulator](https://yourusername.github.io/your-repo/react-native-emulator.html)**
+
+</div>
 
 </td>
 </tr>
