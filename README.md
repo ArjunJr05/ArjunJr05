@@ -236,7 +236,7 @@ languages_spoken: ["English", "Tamil", "Hindi"]
 
 ```mermaid
 mindmap
-  root)🚀 2025 Goals(
+  root)🚀 2026 Goals(
     🌏 Scale FixinGuru
       Multi-region Expansion
       Performance Optimization
